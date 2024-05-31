@@ -20,6 +20,14 @@ import os
 import pandas as pd
 ```
 
+```python
+import requests
+```
+
+```python
+# os.environ['ONCOKB_API_KEY'] = open('/home/chois7/keys/.oncokb_apikey').read().rstrip()
+```
+
 # Data
 
 ```python
@@ -78,10 +86,6 @@ for patient in patients:
 # Oncokb
 
 ```python
-import requests
-```
-
-```python
 def get_oncokb_response(gene, protein_alteration, api_key):
     genome = 'GRCh38'
 
@@ -116,14 +120,6 @@ test_get_oncokb_response()
 ```
 
 ```python
-import os
-```
-
-```python
-os.environ['ONCOKB_API_KEY'] = open('/home/chois7/keys/.oncokb_apikey').read().rstrip()
-```
-
-```python
 api_key = str(os.environ['ONCOKB_API_KEY']).rstrip()
 for patient in patients:
     for comp_set in comp_sets:
@@ -140,16 +136,4 @@ for patient in patients:
                     row = [gene, gene_id, protein_alt, oncokb['oncogenic']]
                     df.loc[df.shape[0]] = row
             df.to_csv(out_path, sep='\t', index=False)
-```
-
-```python
-df['oncogenic'].value_counts()
-```
-
-```python
-gene, protein_alt
-```
-
-```python
-line.strip().split('\t')
 ```
